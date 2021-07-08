@@ -1,0 +1,25 @@
+
+<div class="container" novalidate>
+  <div *ngFor="let plant of allPlants">
+    <mat-card class="polaroid">
+      <mat-card-header>
+        <mat-card-title>{{plant.title}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]=imageSrc(plant.image) alt="Foto">
+      <mat-card-content>
+        <p>
+          {{plant.location}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+
+<div class="floating-button">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
+          id="share-image-button" routerLink="/create" routerLinkActive="active">
+    <i class="material-icons">add</i>
+  </button>
+</div>

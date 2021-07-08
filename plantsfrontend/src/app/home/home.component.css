@@ -1,0 +1,31 @@
+
+
+.floating-button{
+  float: right;
+  padding: 20px;
+}
+
+.container{
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.polaroid{
+  padding-bottom: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-top: 30px
+}
+
+#share-image-button{
+  color:green;
+  border-radius: 75px;
+  border-color: black;
+}
+
+.material-icons{
+  padding-top: 4px;
+}
+
+
+
