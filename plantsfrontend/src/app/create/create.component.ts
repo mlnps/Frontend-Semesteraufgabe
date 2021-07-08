@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { BackendService } from '../backend.service';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -11,7 +11,7 @@ export class CreateComponent implements OnInit {
   formGroup!: FormGroup;
   imageBase64!: '';
 
-  constructor(private fb: FormBuilder, private bs: BackendService,) {
+  constructor(private fb: FormBuilder, private bs: BackendService, private router: Router) {
     // constructor function
   }
 
@@ -48,6 +48,8 @@ export class CreateComponent implements OnInit {
       .then( res => {
         console.log(res);
       })
+
+      this.router.navigateByUrl('/')
   }
 
   uploadFileEvt(imgFile: any): void {
