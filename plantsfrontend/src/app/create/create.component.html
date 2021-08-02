@@ -1,23 +1,34 @@
-<div class="container" novalidate>
+<div id="create-post" class="container" novalidate>
   <div class="form-container">
     <h2>Pflanze hinzufügen</h2>
     <form [formGroup]="formGroup">
+    
 
       <mat-form-field class="form-field" appearance="standard">
-        <mat-label>Plant title</mat-label>
+        <mat-label>Titel der Pflanze</mat-label>
         <input matInput placeholder="Titel" formControlName="inp_title" />
         <mat-error *ngIf="!inp_title.valid && inp_title.touched">
           <span *ngIf="inp_title.errors?.required">This field is mandatory.</span>
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="form-field" appearance="standard">
-        <mat-label>Plant location</mat-label>
+      <video id="player" autoplay></video>
+    <canvas id="canvas" width="320px" height="240px"></canvas>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="capture-btn">Foto</button>
+    
+
+      <!-- <mat-form-field class="form-field" appearance="standard">
+        <mat-label>Ort der Pflanze</mat-label>
         <input matInput placeholder="Location" formControlName="inp_location" />
         <mat-error *ngIf="!inp_location.valid && inp_location.touched">
           <span *ngIf="inp_location.errors?.required">This field is mandatory.</span>
         </mat-error>
-      </mat-form-field>
+      </mat-form-field> -->
+
+      <div class="input-section">
+        <button class="mdl-button mdl-js-button mdl-button--colored" type="button" id="location-btn">Location</button>
+        <div class="mdl-spinner mdl-js-spinner is-active" id="location-loader"></div>
+    </div>
 
       <mat-form-field class="form-field inputbreit" appearance="standard">
         <!-- Readonly Input to show File names -->

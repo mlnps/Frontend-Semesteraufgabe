@@ -2,6 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { BackendService } from '../backend.service';
 import {Router} from '@angular/router';
+
+
+
+let videoPlayer = document.querySelector('#player');
+let canvasElement = document.querySelector('#canvas');
+let captureButton = document.querySelector('#capture-btn');
+let createPostArea = document.querySelector('#create-post');
+
+
+
+ 
+    
+
+
+
+
+
+
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -14,6 +33,10 @@ export class CreateComponent implements OnInit {
   constructor(private fb: FormBuilder, private bs: BackendService, private router: Router) {
     // constructor function
   }
+
+  
+
+
 
   ngOnInit(): void {
     this.formGroup = this.fb.group({

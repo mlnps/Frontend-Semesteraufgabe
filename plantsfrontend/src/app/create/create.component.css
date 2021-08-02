@@ -37,3 +37,24 @@ h2{
   top: 0px;
   cursor: pointer;
 }
+
+#create-post{
+  min-height: calc(100vh - 56px);
+}
+
+#create-post video, #create-post canvas {
+  width: 512px;
+  max-width: 100%;
+  display: none;
+  margin: auto;
+}
+
+
+
+#create-post #capture-btn {
+  margin: 10px auto;
+}
+
+.mdl-spinner {
+  margin: auto;
+}
