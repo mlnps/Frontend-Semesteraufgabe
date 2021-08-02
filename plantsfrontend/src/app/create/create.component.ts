@@ -2,11 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { BackendService } from '../backend.service';
 import {Router} from '@angular/router';
+
+let createPostArea = <HTMLElement>document.querySelector('#create-post');
+let videoPlayer = <HTMLVideoElement>document.querySelector('player');
+let canvasElement = <HTMLCanvasElement>document.querySelector('#canvas');
+let captureButton = <HTMLElement>document.querySelector('#capture-btn');
+let imagePicker = <HTMLElement>document.querySelector('#image-picker');
+let imagePickerArea = <HTMLElement>document.querySelector('#pick-image');
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
+
 export class CreateComponent implements OnInit {
   formGroup!: FormGroup;
   imageBase64!: '';
@@ -34,6 +43,47 @@ export class CreateComponent implements OnInit {
   get inp_image(): FormControl {
     return this.formGroup.get('inp_image') as FormControl;
   }
+
+  initializeMedia() {
+    const n = <any>navigator;
+    if (!('mediaDevices' in n)) {
+      n.mediaDevices = {};
+    }
+    if (!('getUserMedia' in n.mediaDevices)) {
+      // @ts-ignore
+      n.mediaDevices.getUserMedia = function (constraints) {
+        var getUserMedia = n.webkitGetUserMedia || n.mozGetUserMedia;
+        if (!getUserMedia) {
+          return Promise.reject(new Error('getUserMedia is not implemented'));
+        }
+        return new Promise(function (resolve, reject) {
+          getUserMedia.call(n, constraints, resolve, reject);
+        })
+      }
+    }
+    n.mediaDevices.getUserMedia({video: true})
+      .then( (stream: MediaProvider | null) => {
+        videoPlayer.srcObject = stream;
+        videoPlayer.style.display = 'block';
+      })
+      .catch( (err: MediaProvider | null) => {
+        imagePickerArea.style.display = 'block';
+      });
+
+  }
+
+  openCreatePostModal() {
+    createPostArea!.style.transform = 'translateY(0)';
+    this.initializeMedia()
+  }
+
+  closeCreatePostModal() {
+    createPostArea.style.transform = 'translateY(100vH)';
+    imagePickerArea.style.display = 'none';
+    videoPlayer.style.display = 'none';
+    canvasElement.style.display = 'none';
+  };
+
 
   onSubmit(): void
   {
@@ -73,6 +123,7 @@ export class CreateComponent implements OnInit {
 
     }
   }
+
 
 }
 
