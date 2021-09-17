@@ -12,7 +12,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="form-field" appearance="standard">
+<!--      <mat-form-field class="form-field" appearance="standard">
         <mat-label>Plant location</mat-label>
         <input matInput placeholder="Location" formControlName="inp_location" />
         <mat-error *ngIf="!inp_location.valid && inp_location.touched">
@@ -20,7 +20,7 @@
           >This field is mandatory.</span
           >
         </mat-error>
-      </mat-form-field>
+      </mat-form-field>-->
 
       <video id="player" autoplay></video>
       <canvas id="canvas" width="320px" height="240px"></canvas>
@@ -43,9 +43,22 @@
         <input type="file" accept="image/*" id="image-picker" />
       </div>
 
-      <div class="input-section">
+      <form>
+        <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="manual-location">
+          <input class="mdl-textfield__input" type="text" id="location">
+          <label class="mdl-textfield__label" for="location" name="location">Ort</label>
+        </div>
+        <div class="input-section">
+          <button (click)="getLocation()" class="mdl-button mdl-js-button mdl-button--colored" type="button" id="location-btn">Location</button>
+          <div class="mdl-spinner mdl-js-spinner is-active" id="location-loader"></div>
+        </div>
+        <br>
+      </form>
+
+<!--      <div class="input-section">
         <button
-          class="mdl-button mdl-js-button mdl-button--colored"
+          (click)="getLocation()"
+          class="mdl-button mdl-js-button mdl-button&#45;&#45;colored"
           type="button"
           id="location-btn"
         >
@@ -55,7 +68,7 @@
           class="mdl-spinner mdl-js-spinner is-active"
           id="location-loader"
         ></div>
-      </div>
+      </div>-->
       <!--      <mat-form-field class="form-field" appearance="standard">-->
       <!--        <mat-label>Plant location</mat-label>-->
       <!--        <input matInput placeholder="Location" formControlName="inp_location" />-->

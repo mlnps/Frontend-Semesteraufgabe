@@ -48,7 +48,9 @@ h2{
   margin: auto;
 }
 
-
+#location-loader {
+  display: none;
+}
 
 #create-post #capture-btn {
   margin: 10px auto;

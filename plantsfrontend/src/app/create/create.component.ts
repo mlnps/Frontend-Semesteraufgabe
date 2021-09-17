@@ -15,6 +15,10 @@ let createPostArea = <HTMLElement>document.querySelector('#create-post');
 let imagePicker = <HTMLElement>document.querySelector('#image-picker');
 // let imagePickerArea = <HTMLElement>document.querySelector('#pick-image');
 
+//let locationButton = <HTMLElement>document.querySelector('#location-btn');
+//let locationLoader = <HTMLElement>document.querySelector('#location-loader');
+let fetchedLocation;
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -114,10 +118,48 @@ export class CreateComponent implements OnInit {
       this.imageBase64 = base64String;
     });
   }
+  getLocation() {
+    console.log("geolocation asked for");
+    if(!('geolocation' in navigator)) {
+      return;
+    }
+    let fetchedLocation;
+    const locationButton = <HTMLButtonElement>document.querySelector('#location-btn');
+    const locationLoader = <HTMLElement>document.querySelector('#location-loader');
+    locationButton.style.display = 'none';
+    locationLoader.style.display = 'block';
+
+    navigator.geolocation.getCurrentPosition( position => {
+      locationButton.style.display = 'inline';
+      locationLoader.style.display = 'none';
+      fetchedLocation = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+      console.log('current position: ', fetchedLocation);
+      const locationInput = <HTMLInputElement>document.querySelector('#location');
+      locationInput.value = 'In Berlin';
+      const manualLocation = <HTMLElement>document.querySelector('#manual-location');
+      manualLocation.classList.add('is-focused');
+    }, err => {
+      console.log(err);
+      locationButton.style.display = 'inline';
+      locationLoader.style.display = 'none';
+      alert('Couldn\'t fetch location, please enter manually!');
+      fetchedLocation = null;
+    }, { timeout: 5000});
+  };
+
+  initializeLocation() {
+    console.log("checking for geolocation in browser");
+    if(!('geolocation' in navigator)) {
+      console.log("no geolocation in navigator");
+      const locationButton = <HTMLElement>document.querySelector('#location-btn');
+      locationButton.style.display = 'none';
+    }
+  }
 
   openCreatePostModal() {
     createPostArea!.style.transform = 'translateY(0)';
     this.initializeMedia();
+    this.initializeLocation();
   }
 
   closeCreatePostModal() {
@@ -125,6 +167,8 @@ export class CreateComponent implements OnInit {
     // imagePickerArea.style.display = 'none';
     // videoPlayer.style.display = 'none';
     // canvasElement.style.display = 'none';
+    //locationButton.style.display = 'inline';
+    //locationLoader.style.display = 'none';
   }
 
   onSubmit(): void {
