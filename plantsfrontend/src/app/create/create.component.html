@@ -12,7 +12,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="form-field" appearance="standard">
+      <!-- <mat-form-field class="form-field" appearance="standard">
         <mat-label>Plant location</mat-label>
         <input matInput placeholder="Location" formControlName="inp_location" />
         <mat-error *ngIf="!inp_location.valid && inp_location.touched">
@@ -20,32 +20,33 @@
           >This field is mandatory.</span
           >
         </mat-error>
-      </mat-form-field>
+      </mat-form-field> -->
 
       <video id="player" autoplay></video>
       <canvas id="canvas" width="320px" height="240px"></canvas>
-      <button
+      
+      <button mat-raised-button
         (click)="initializeMedia()"
-        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+        
         id="camera-btn"
       >
         Kamerazugriff
       </button>
-      <button
+      
+      <button mat-raised-button
         (click)="captureImage()"
-        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+        
         id="capture-btn"
       >
         Foto
-      </button>
+    </button>
       <div id="pick-image" style="display: none">
         <h6>Bild auswählen</h6>
         <input type="file" accept="image/*" id="image-picker" />
       </div>
 
       <div class="input-section">
-        <button
-          class="mdl-button mdl-js-button mdl-button--colored"
+        <button mat-raised-button
           type="button"
           id="location-btn"
         >

@@ -8,6 +8,7 @@ import {
 import { BackendService } from '../backend.service';
 import { Router } from '@angular/router';
 import { dataURItoBlob, blobToBase64 } from './utility';
+import "@material/button/dist/mdc.button.css";
 
 let createPostArea = <HTMLElement>document.querySelector('#create-post');
 // let videoPlayer = <HTMLVideoElement>document.querySelector('player');

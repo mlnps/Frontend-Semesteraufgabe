@@ -57,3 +57,13 @@ h2{
 .mdl-spinner {
   margin: auto;
 }
+
+#camera-btn{
+
+  margin: 2%;
+}
+
+#location-btn{
+
+  margin-bottom: 2%;
+}

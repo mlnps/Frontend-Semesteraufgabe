@@ -3,7 +3,7 @@
 .floating-button{
   float: right;
   padding: 20px;
-}
+} 
 
 .container{
   padding-left: 200px;
@@ -17,11 +17,11 @@
   margin-top: 30px
 }
 
-#share-image-button{
+ #share-image-button{
   color:green;
   border-radius: 75px;
   border-color: black;
-}
+} 
 
 .material-icons{
   padding-top: 4px;
