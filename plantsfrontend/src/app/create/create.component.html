@@ -3,7 +3,7 @@
     <h2>Pflanze hinzufügen</h2>
     <form [formGroup]="formGroup">
       <mat-form-field class="form-field" appearance="standard">
-        <mat-label>Plant title</mat-label>
+        <mat-label>Name der Pflanze</mat-label>
         <input matInput placeholder="Titel" formControlName="inp_title" />
         <mat-error *ngIf="!inp_title.valid && inp_title.touched">
           <span *ngIf="inp_title.errors?.required"
@@ -43,17 +43,26 @@
         <input type="file" accept="image/*" id="image-picker" />
       </div>
 
-      <form>
+<!--      <form>-->
         <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="manual-location">
           <input class="mdl-textfield__input" type="text" id="location">
-          <label class="mdl-textfield__label" for="location" name="location">Ort</label>
+          <label class="mdl-textfield__label" for="location" name="location">Fundort</label>
+<!--                <mat-form-field class="form-field" appearance="standard">
+                  <mat-label>Plant location</mat-label>
+                  <input matInput placeholder="Location" formControlName="inp_location" />
+                  <mat-error *ngIf="!inp_location.valid && inp_location.touched">
+                    <span *ngIf="inp_location.errors?.required"
+                    >This field is mandatory.</span
+                    >
+                  </mat-error>
+                </mat-form-field>-->
         </div>
         <div class="input-section">
-          <button (click)="getLocation()" class="mdl-button mdl-js-button mdl-button--colored" type="button" id="location-btn">Location</button>
+          <button (click)="initializeLocation(); getLocation()" class="mdl-button mdl-js-button mdl-button--colored" type="button" id="location-btn">Aktuelle Position verwenden</button>
           <div class="mdl-spinner mdl-js-spinner is-active" id="location-loader"></div>
         </div>
         <br>
-      </form>
+<!--      </form>-->
 
 <!--      <div class="input-section">
         <button
