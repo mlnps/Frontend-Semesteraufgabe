@@ -172,6 +172,11 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit(): void {
+    // if (!this.inp_title || !this.inp_title.value || !this.inp_location || !this.inp_location.value || !this.imageBase64) {
+    //   alert('Bitte die Form komplett ausfüllen.');
+    //   return;
+    // }
+
     const plant = {
       id: null,
       title: this.inp_title.value,
@@ -181,9 +186,12 @@ export class CreateComponent implements OnInit {
     console.log('plant : ', plant);
     this.bs.addPlant(plant).then((res) => {
       console.log(res);
+      
     });
-
+    
     this.router.navigateByUrl('/');
+    
+
   }
 
   uploadFileEvt(imgFile: any): void {

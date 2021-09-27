@@ -52,10 +52,24 @@ h2{
   display: none;
 }
 
-#create-post #capture-btn {
+#create-post  {
   margin: 10px auto;
 }
 
 .mdl-spinner {
   margin: auto;
+}
+
+#camera-btn{
+  margin: 2%;
+}
+
+#location-btn{
+
+margin: 2%;
+}
+
+.last-button{
+
+  background-color: rgb(25, 87, 61);
 }
