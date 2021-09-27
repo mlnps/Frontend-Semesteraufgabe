@@ -9,15 +9,6 @@ import { BackendService } from '../backend.service';
 import { Router } from '@angular/router';
 import { dataURItoBlob, blobToBase64 } from './utility';
 
-let createPostArea = <HTMLElement>document.querySelector('#create-post');
-// let videoPlayer = <HTMLVideoElement>document.querySelector('player');
-
-let imagePicker = <HTMLElement>document.querySelector('#image-picker');
-// let imagePickerArea = <HTMLElement>document.querySelector('#pick-image');
-
-//let locationButton = <HTMLElement>document.querySelector('#location-btn');
-//let locationLoader = <HTMLElement>document.querySelector('#location-loader');
-let fetchedLocation;
 
 @Component({
   selector: 'app-create',
@@ -39,7 +30,7 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = this.fb.group({
       inp_title: ['', Validators.required],
-      inp_location: ['', Validators.required],
+      //location: ['', Validators.required],
       // inp_image: ['', Validators.required],
     });
   }
@@ -52,9 +43,14 @@ export class CreateComponent implements OnInit {
     return this.formGroup.get('inp_location') as FormControl;
   }
 
-  get inp_image(): FormControl {
+
+
+
+
+
+/*  get inp_image(): FormControl { // TODO: brauchen wir nicht?
     return this.formGroup.get('inp_image') as FormControl;
-  }
+  }*/
 
   initializeMedia() {
     const n = <any>navigator;
@@ -64,7 +60,7 @@ export class CreateComponent implements OnInit {
     }
     if (!('getUserMedia' in n.mediaDevices)) {
       n.mediaDevices.getUserMedia = function (constraints: any) {
-        var getUserMedia = n.webkitGetUserMedia || n.mozGetUserMedia;
+        const getUserMedia = n.webkitGetUserMedia || n.mozGetUserMedia;
         if (!getUserMedia) {
           return Promise.reject(new Error('getUserMedia is not implemented'));
         }
@@ -156,20 +152,20 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  openCreatePostModal() {
+/*  openCreatePostModal() { // TODO: wird nirgends aufgerufen.. brauchen wir das überhaupt?
     createPostArea!.style.transform = 'translateY(0)';
     this.initializeMedia();
     this.initializeLocation();
-  }
+  }*/
 
-  closeCreatePostModal() {
+/*  closeCreatePostModal() { //  TODO: wird nirgends aufgerufen.. brauchen wir das überhaupt?
     createPostArea.style.transform = 'translateY(100vH)';
     // imagePickerArea.style.display = 'none';
     // videoPlayer.style.display = 'none';
     // canvasElement.style.display = 'none';
     //locationButton.style.display = 'inline';
     //locationLoader.style.display = 'none';
-  }
+  }*/
 
   onSubmit(): void {
     // if (!this.inp_title || !this.inp_title.value || !this.inp_location || !this.inp_location.value || !this.imageBase64) {
@@ -180,7 +176,7 @@ export class CreateComponent implements OnInit {
     const plant = {
       id: null,
       title: this.inp_title.value,
-      location: this.inp_location.value,
+      location: this.inp_location.value,//this.inp_location.value,
       image: this.imageBase64,
     };
     console.log('plant : ', plant);
@@ -194,7 +190,7 @@ export class CreateComponent implements OnInit {
 
   }
 
-  uploadFileEvt(imgFile: any): void {
+/*  uploadFileEvt(imgFile: any): void { //TODO: wird nirgends aufgerufen.. brauchen wir das überhaupt?
     console.log('upload', imgFile.target.files);
     if (imgFile.target.files && imgFile.target.files[0]) {
       const reader = new FileReader();
@@ -212,5 +208,5 @@ export class CreateComponent implements OnInit {
       };
       reader.readAsDataURL(imgFile.target.files[0]);
     }
-  }
+  }*/
 }
