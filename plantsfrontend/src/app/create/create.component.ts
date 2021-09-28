@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = this.fb.group({
       inp_title: ['', Validators.required],
-      //location: ['', Validators.required],
+      inp_location: ['', Validators.required],
       // inp_image: ['', Validators.required],
     });
   }
