@@ -1,4 +1,3 @@
-
 .vertikal {
   display: flex;
   flex-direction: column;
@@ -36,4 +35,41 @@ h2{
   left: 0px;
   top: 0px;
   cursor: pointer;
+}
+
+#create-post{
+  min-height: calc(100vh - 56px);
+}
+
+#create-post video, #create-post canvas {
+  width: 512px;
+  max-width: 100%;
+  display: none;
+  margin: auto;
+}
+
+#location-loader {
+  display: none;
+}
+
+#create-post  {
+  margin: 10px auto;
+}
+
+.mdl-spinner {
+  margin: auto;
+}
+
+#camera-btn{
+  margin: 2%;
+}
+
+#location-btn{
+
+margin: 2%;
+}
+
+.last-button{
+
+  background-color: rgb(25, 87, 61);
 }
