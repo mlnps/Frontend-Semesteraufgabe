@@ -6,8 +6,10 @@
 }
 
 .container{
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 710px;
+  margin: 0 auto;
 }
 
 .polaroid{
