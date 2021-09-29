@@ -26,5 +26,18 @@
         ]
       }
     }
+  ],
+  "dataGroups":[
+    {
+      "name":"api",
+      "urls":["http://localhost:3001/plants"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "timeout": "10s",
+        "maxSize": 30,
+        "maxAge": "1d"
+      }
+    }
   ]
 }
